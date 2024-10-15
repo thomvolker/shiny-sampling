@@ -80,7 +80,7 @@ server <- function(input, output) {
                                  xlim = c(tval, 6)) +
           ggplot2::geom_label(ggplot2::aes(x = 4, y = nulldist(0, input$n, input$sd),
                                            label = paste0("Type-I error rate: ", round(alpha, 3))),
-                              size = 8, col = "lightcoral")
+                              size = 8, col = "lightblue3")
       } else {
         tval <- qt(1 - input$alpha/2, input$n-2) * input$sd/sqrt(input$n)
         power <- 1 - integrate(altdist, -tval, tval, diff = input$diff, n = input$n, sd = input$sd)$value
