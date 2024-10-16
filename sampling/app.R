@@ -96,7 +96,8 @@ server <- function(input, output) {
                                  xlim = c(tval, 6)) +
           ggplot2::geom_label(ggplot2::aes(x = 4, y = nulldist(0, input$n, input$sd),
                              label = paste0("Power: ", round(power, 3))),
-                             size = 8, col = "lightcoral")
+                             size = 8, col = "lightcoral") +
+          ggplot2::ylab(NULL)
       }
       p
     })
