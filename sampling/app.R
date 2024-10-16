@@ -11,7 +11,6 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-
     # Application title
     titlePanel("Sampling distribution"),
 
@@ -52,6 +51,8 @@ ui <- fluidPage(
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
+
+  library(ggplot2)
 
     output$distPlot <- renderPlot({
       nulldist <- \(x, n, sd) dt(x*sqrt(n)/sd, n - 2) / (sd/sqrt(n))
