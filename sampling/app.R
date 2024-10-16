@@ -39,7 +39,8 @@ ui <- fluidPage(
                         min = 0.001,
                         max = 0.5,
                         value = 0.05,
-                        step = 0.001)
+                        step = 0.001),
+            actionButton("reset", "Reset settings")
         ),
 
         # Show a plot of the generated distribution
@@ -53,6 +54,13 @@ ui <- fluidPage(
 server <- function(input, output) {
 
   library(ggplot2)
+
+  observeEvent(input$reset, {
+    updateSliderInput(inputId = "diff", value = 0.1)
+    updateSliderInput(inputId = "sd", value = 2)
+    updateSliderInput(inputId = "n", value = 50)
+    updateSliderInput(inputId = "alpha", value = 0.05)
+  })
 
     output$distPlot <- renderPlot({
       nulldist <- \(x, n, sd) dt(x*sqrt(n)/sd, n - 2) / (sd/sqrt(n))
